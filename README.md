@@ -1,10 +1,10 @@
-# Martins dotfiles #
+# Martins dotfiles
 
 Inspiration:
 
 - https://github.com/FrostyX/dotfiles
 
-## EMACS ##
+## EMACS
 
 Modes and packages:
 
