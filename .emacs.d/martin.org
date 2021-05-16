@@ -2,7 +2,6 @@
 
 * Table of content :TOC:
 - [[#emacs][EMACS]]
-- [[#gui][GUI]]
 - [[#markdown][Markdown]]
 - [[#magit][Magit]]
 - [[#org-mode][Org Mode]]
@@ -13,15 +12,18 @@
   Hint: align comments using ~align-regexp~
 
   #+BEGIN_SRC emacs-lisp
-    (setq-default
-     fill-column 80			; Width for automatic line breaks
-     inhibit-startup-screen t)		; Disable startup screen
+	(setq-default
+	 fill-column 80				; Width for automatic line breaks
+	 inhibit-startup-screen t		; Disable startup screen
+	 tab-width 4				; Smaller tabs
+	 indend-tabs-mode nil			; Spaces instead of tabs
+	 )
 
-    (global-auto-revert-mode t)		; Reload changed files
-    (electric-pair-mode)		; Smart handling of parens
-    (set-default-coding-systems 'utf-8) ; Default to UTF-8 encoding
-    (tool-bar-mode -1)			; Disable the toolbar
-    (column-number-mode t)		; Display column number in modeline
+	(global-auto-revert-mode t)		; Reload changed files
+	(electric-pair-mode)			; Smart handling of parens
+	(set-default-coding-systems 'utf-8)	; Default to UTF-8 encoding
+	(tool-bar-mode -1)			; Disable the toolbar
+	(column-number-mode t)			; Display column number in modeline
   #+END_SRC
 
 * Markdown
