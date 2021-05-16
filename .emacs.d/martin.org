@@ -1,6 +1,32 @@
 #+TITLE: Martins EMACS configuration
 
+* Table of content :TOC:
+- [[#emacs][EMACS]]
+- [[#gui][GUI]]
+- [[#markdown][Markdown]]
+- [[#magit][Magit]]
+- [[#org-mode][Org Mode]]
+- [[#long-lines][Long lines]]
+
+* EMACS
+
+  Hint: align comments using ~align-regexp~
+  
+  #+BEGIN_SRC emacs-lisp
+    (setq-default
+     fill-column 80			; Width for automatic line breaks
+     inhibit-startup-screen t)		; Disable startup screen
+    (global-auto-revert-mode t)		; Reload changed files
+    (electric-pair-mode)		; Smart handling of parens
+    (set-default-coding-systems 'utf-8) ; Default to UTF-8 encoding
+  #+END_SRC
+
 * GUI
+
+  #+BEGIN_SRC emacs-lisp
+    ;; Disable the toolbar
+    (tool-bar-mode -1)
+  #+END_SRC
 
 * Markdown
 
@@ -13,8 +39,8 @@
 
 * Magit
 
-  [[https://magit.vc/][Magit]]
-  [[https://emacsair.me/2017/09/01/magit-walk-through/][Magit walk through]]
+  - [[https://magit.vc/][Magit]]
+  [[https://emacsair.me/2017/09/01/magit-walk-through/][- Magit walk through]]
 
   #+BEGIN_SRC emacs-lisp
     (use-package magit
@@ -25,3 +51,23 @@
 * Org Mode
 
   [[https://orgmode.org/][Org Mode]]
+
+  Use toc-org to generate table of contents. Put ~:TOC:~ tag to a heading and run
+  ~toc-org-insert-toc~ to insert a toc  
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package toc-org
+      :ensure t
+      :after org)
+  #+END_SRC
+  
+* Long lines
+
+  For text modes it's nice to wrap lines at 80 char automatically
+
+  #+BEGIN_SRC emacs-lisp
+  (setq fill-column 80)
+  (add-hook 'org-mode-hook 'turn-on-auto-fill)
+  (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
+  (add-hook 'text-mode-hook 'turn-on-auto-fill)
+  #+END_SRC
