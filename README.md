@@ -6,7 +6,7 @@ Inspiration:
 
 ## EMACS ##
 
-Modes:
+Modes and packages:
 
-- [Markdown Mode](https://jblevins.org/projects/markdown-mode/)
+- [use-package](https://jwiegley.github.io/use-package/)
 

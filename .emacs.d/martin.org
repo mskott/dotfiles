@@ -1,0 +1,27 @@
+#+TITLE: Martins EMACS configuration
+
+* GUI
+
+* Markdown
+
+  [[https://jblevins.org/projects/markdown-mode/][Markdown-mode]]
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package markdown-mode
+      :ensure t)
+  #+END_SRC
+
+* Magit
+
+  [[https://magit.vc/][Magit]]
+  [[https://emacsair.me/2017/09/01/magit-walk-through/][Magit walk through]]
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package magit
+      :ensure t)
+  #+END_SRC
+
+ 
+* Org Mode
+
+  [[https://orgmode.org/][Org Mode]]
