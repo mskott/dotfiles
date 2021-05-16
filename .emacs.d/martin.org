@@ -54,7 +54,11 @@
     (use-package org
       :ensure t
       :custom
-      (org-src-tab-acts-natively t))
+      (org-src-tab-acts-natively t)
+      (org-return-follows-link t) ; Follow links when pressing RET
+      :bind (("C-c l" . org-store-link)
+	     ("C-c a" . org-agenda)
+	     ("C-c c" . org-capture)))
   #+END_SRC
 
   Use toc-org to generate table of contents. Put ~:TOC:~ tag to a heading and run
