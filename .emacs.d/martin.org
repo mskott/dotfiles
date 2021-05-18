@@ -13,17 +13,17 @@
 
   #+BEGIN_SRC emacs-lisp
 	(setq-default
-	 fill-column 80				; Width for automatic line breaks
-	 inhibit-startup-screen t		; Disable startup screen
-	 tab-width 4				; Smaller tabs
-	 indend-tabs-mode nil			; Spaces instead of tabs
+	 fill-column 80						; Width for automatic line breaks
+	 inhibit-startup-screen t			; Disable startup screen
+	 tab-width 4						; Smaller tabs
+	 indend-tabs-mode nil				; Spaces instead of tabs
 	 )
 
-	(global-auto-revert-mode t)		; Reload changed files
-	(electric-pair-mode)			; Smart handling of parens
+	(global-auto-revert-mode t)			; Reload changed files
+	(electric-pair-mode)				; Smart handling of parens
 	(set-default-coding-systems 'utf-8)	; Default to UTF-8 encoding
-	(tool-bar-mode -1)			; Disable the toolbar
-	(column-number-mode t)			; Display column number in modeline
+	(tool-bar-mode -1)					; Disable the toolbar
+	(column-number-mode t)				; Display column number in modeline
   #+END_SRC
 
 * Markdown
@@ -80,4 +80,15 @@
     (add-hook 'org-mode-hook 'turn-on-auto-fill)
     (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
     (add-hook 'text-mode-hook 'turn-on-auto-fill)
+  #+END_SRC
+
+* Olivetti mode
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package olivetti
+	  :ensure t
+	  :hook
+	  (text-mode . olivetti-mode)
+	  :custom
+	  (olivetti-body-width 120)) ; Make text body a bit wider
   #+END_SRC
