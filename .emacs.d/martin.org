@@ -17,6 +17,7 @@
 	 inhibit-startup-screen t			; Disable startup screen
 	 tab-width 4						; Smaller tabs
 	 indend-tabs-mode nil				; Spaces instead of tabs
+	 visible-bell t						; No beep
 	 )
 
 	(global-auto-revert-mode t)			; Reload changed files
@@ -91,4 +92,14 @@
 	  (text-mode . olivetti-mode)
 	  :custom
 	  (olivetti-body-width 120)) ; Make text body a bit wider
+  #+END_SRC
+
+* Font
+
+  Fonts are strange - be carefull when setting hight, 20 is way too small.
+  
+  #+BEGIN_SRC emacs-lisp
+	(set-face-attribute 'default nil
+						:font "DejaVu Sans Mono"
+						:height 100)
   #+END_SRC
