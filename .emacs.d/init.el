@@ -24,7 +24,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(olivetti toc-org use-package markdown-mode org magit htmlize)))
+   '(ws-butler ws-buffer olivetti toc-org use-package markdown-mode org magit htmlize)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

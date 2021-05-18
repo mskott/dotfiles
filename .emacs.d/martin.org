@@ -94,7 +94,7 @@
 	  (olivetti-body-width 120)) ; Make text body a bit wider
   #+END_SRC
 
-* Font
+* Fonts
 
   Fonts are strange - be carefull when setting hight, 20 is way too small.
   
@@ -102,4 +102,15 @@
 	(set-face-attribute 'default nil
 						:font "DejaVu Sans Mono"
 						:height 100)
+  #+END_SRC
+
+* Handle whitespace
+
+  https://github.com/lewang/ws-butler
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package ws-butler
+	  :ensure t
+	  :hook ((text-mode . ws-butler-mode)
+			 (prog-mode . ws-butler-mode)))
   #+END_SRC
