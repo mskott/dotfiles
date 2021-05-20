@@ -7,6 +7,13 @@
 - [[#org-mode][Org Mode]]
 - [[#long-lines][Long lines]]
 
+* To be done
+
+  - Se på [[https://oremacs.com/swiper/][Ivy mode]] og [[https://github.com/Yevgnen/ivy-rich][Ivy-rich mode]]
+  - [[https://github.com/xuchunyang/flyspell-popup][Flyspell-popup]]
+  - Flyt ~customize~ ting ud i sin egen gitignored fil
+
+
 * EMACS
 
   Hint: align comments using ~align-regexp~
@@ -113,4 +120,11 @@
 	  :ensure t
 	  :hook ((text-mode . ws-butler-mode)
 			 (prog-mode . ws-butler-mode)))
+  #+END_SRC
+
+* YAML mode
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package yaml-mode
+	  :ensure t)
   #+END_SRC

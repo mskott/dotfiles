@@ -3,6 +3,7 @@
 Inspiration:
 
 - https://github.com/FrostyX/dotfiles
+- https://github.com/daviwil/dotfiles/blob/master/Emacs.org
 
 ## EMACS
 
