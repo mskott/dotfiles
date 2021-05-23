@@ -1,11 +1,15 @@
 #+TITLE: Martins EMACS configuration
 
-* Table of content :TOC:
+* Table of contents                                                     :TOC:
 - [[#emacs][EMACS]]
 - [[#markdown][Markdown]]
 - [[#magit][Magit]]
 - [[#org-mode][Org Mode]]
 - [[#long-lines][Long lines]]
+- [[#olivetti-mode][Olivetti mode]]
+- [[#fonts][Fonts]]
+- [[#handle-whitespace][Handle whitespace]]
+- [[#yaml-mode][YAML mode]]
 
 * EMACS
 
@@ -64,13 +68,17 @@
 	     ("C-c c" . org-capture)))
   #+END_SRC
 
-  Use toc-org to generate table of contents. Put ~:TOC:~ tag to a heading and run
-  ~toc-org-insert-toc~ to insert a toc
+  [[https://github.com/snosov1/toc-org][Toc Org]]
+
+  Use toc-org to generate table of contents. Put ~:TOC:~ tag (C-c C-q) to a
+  heading and run ~toc-org-insert-toc~ to insert a toc
 
   #+BEGIN_SRC emacs-lisp
-    (use-package toc-org
-      :ensure t
-      :after org)
+	(use-package toc-org
+	  :ensure t
+	  :after org
+	  :hook ((org-mode . toc-org-mode)
+			 (markdown-mode . toc-org-mode)))
   #+END_SRC
 
 * Long lines
