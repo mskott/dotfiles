@@ -7,14 +7,6 @@
 - [[#org-mode][Org Mode]]
 - [[#long-lines][Long lines]]
 
-* To be done
-
-  - Se på [[https://oremacs.com/swiper/][Ivy mode]] og [[https://github.com/Yevgnen/ivy-rich][Ivy-rich mode]]
-  - [[https://github.com/xuchunyang/flyspell-popup][Flyspell-popup]]
-  - Flyt ~customize~ ting ud i sin egen gitignored fil
-  - Klokkeslet, dato, batteri status i modeline
-
-
 * EMACS
 
   Hint: align comments using ~align-regexp~
