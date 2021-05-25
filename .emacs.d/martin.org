@@ -72,9 +72,6 @@
 	  (set-face-attribute 'org-special-keyword nil	:inherit '(font-lock-comment-face fixed-pitch))
 	  (set-face-attribute 'org-table nil			:inherit '(shadow fixed-pitch))
 	  (set-face-attribute 'org-verbatim nil			:inherit '(shadow fixed-pitch)))
-
-	(defun ms/org-mode-setup ()
-	  (variable-pitch-mode 1))
   #+END_SRC
 
   #+BEGIN_SRC emacs-lisp
