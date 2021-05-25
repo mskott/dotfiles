@@ -5,7 +5,6 @@
 - [[#markdown][Markdown]]
 - [[#magit][Magit]]
 - [[#org-mode][Org Mode]]
-- [[#long-lines][Long lines]]
 - [[#olivetti-mode][Olivetti mode]]
 - [[#fonts][Fonts]]
 - [[#handle-whitespace][Handle whitespace]]
@@ -17,7 +16,6 @@
 
   #+BEGIN_SRC emacs-lisp
 	(setq-default
-	 fill-column 80						; Width for automatic line breaks
 	 inhibit-startup-screen t			; Disable startup screen
 	 tab-width 4						; Smaller tabs
 	 indend-tabs-mode nil				; Spaces instead of tabs
@@ -39,9 +37,10 @@
 	(use-package markdown-mode
 	  :ensure t
 	  :custom
-	  (markdown-asymmetric-header t) ; Only place header markup at begging of line
+	  (markdown-asymmetric-header t)		; Only place header markup at begging of line
 	  :hook
-	  (markdown-mode . variable-pitch-mode)
+	  (markdown-mode . variable-pitch-mode)	; Display text in a variable pitch
+	  (markdown-mode . visual-line-mode)	; Better handling of long line
 	  )
   #+END_SRC
 
@@ -51,8 +50,8 @@
   [[https://emacsair.me/2017/09/01/magit-walk-through/][- Magit walk through]]
 
   #+BEGIN_SRC emacs-lisp
-    (use-package magit
-      :ensure t)
+	(use-package magit
+	  :ensure t)
   #+END_SRC
 
 
@@ -62,58 +61,49 @@
 
   Use ~describe-face~ to lookup faces and their use.
 
-#+BEGIN_SRC emacs-lisp
-  (defun ms/org-font-setup ()
-	;; Ensure some things are rendered as fixed-pitch even in variable-pitch mode
-    ;; Should be done with use-package :custom-face, but I couldn't get it to work with multiple faces
-	(set-face-attribute 'org-block nil				:foreground nil :inherit 'fixed-pitch)
-	(set-face-attribute 'org-checkbox nil			:inherit 'fixed-pitch)
-	(set-face-attribute 'org-code nil				:inherit '(shadow fixed-pitch))
-	(set-face-attribute 'org-meta-line nil			:inherit '(font-lock-comment-face fixed-pitch))
-	(set-face-attribute 'org-special-keyword nil	:inherit '(font-lock-comment-face fixed-pitch))
-	(set-face-attribute 'org-table nil				:inherit '(shadow fixed-pitch))
-	(set-face-attribute 'org-verbatim nil			:inherit '(shadow fixed-pitch)))
+  #+BEGIN_SRC emacs-lisp
+	(defun ms/org-font-setup ()
+	  ;; Ensure some things are rendered as fixed-pitch even in variable-pitch mode
+	  ;; Should be done with use-package :custom-face, but I couldn't get it to work with multiple faces
+	  (set-face-attribute 'org-block nil			:foreground nil :inherit 'fixed-pitch)
+	  (set-face-attribute 'org-checkbox nil			:inherit 'fixed-pitch)
+	  (set-face-attribute 'org-code nil				:inherit '(shadow fixed-pitch))
+	  (set-face-attribute 'org-meta-line nil		:inherit '(font-lock-comment-face fixed-pitch))
+	  (set-face-attribute 'org-special-keyword nil	:inherit '(font-lock-comment-face fixed-pitch))
+	  (set-face-attribute 'org-table nil			:inherit '(shadow fixed-pitch))
+	  (set-face-attribute 'org-verbatim nil			:inherit '(shadow fixed-pitch)))
 
-  (defun ms/org-mode-setup ()
-	(variable-pitch-mode 1)) ; Display text in a variable pitch
-#+END_SRC
+	(defun ms/org-mode-setup ()
+	  (variable-pitch-mode 1))
+  #+END_SRC
 
-#+BEGIN_SRC emacs-lisp
-  (use-package org
-	:ensure t
-	:custom
-	(org-src-tab-acts-natively t)
-	(org-return-follows-link t) ; Follow links when pressing RET
-	:bind (("C-c l" . org-store-link)
-		   ("C-c a" . org-agenda)
-		   ("C-c c" . org-capture))
-	:hook
-	(org-mode . ms/org-mode-setup)
-	:config
-	(ms/org-font-setup))
+  #+BEGIN_SRC emacs-lisp
+	(use-package org
+	  :ensure t
+	  :custom
+	  (org-src-tab-acts-natively t)
+	  (org-return-follows-link t)			; Follow links when pressing RET
+	  :bind (("C-c l" . org-store-link)
+			 ("C-c a" . org-agenda)
+			 ("C-c c" . org-capture))
+	  :hook
+	  (org-mode . variable-pitch-mode)	; Display text in a variable pitch
+	  (org-mode . visual-line-mode)		; Better handling of long line
+	  :config
+	  (ms/org-font-setup))
   #+END_SRC
 
   [[https://github.com/snosov1/toc-org][Toc Org]]
 
-  Use toc-org to generate table of contents. Put ~:TOC:~ tag (C-c C-q) to a
-  heading and run ~toc-org-insert-toc~ to insert a toc
+  Use toc-org to generate table of contents. Put ~:TOC:~ tag (C-c C-q) to a heading and run ~toc-org-insert-toc~ to insert a toc
 
   #+BEGIN_SRC emacs-lisp
 	(use-package toc-org
 	  :ensure t
 	  :after org
-	  :hook ((org-mode . toc-org-mode)
-			 (markdown-mode . toc-org-mode)))
-  #+END_SRC
-
-* Long lines
-
-  For text modes it's nice to wrap lines at ~fill-column~ automatically
-
-  #+BEGIN_SRC emacs-lisp
-    (add-hook 'org-mode-hook 'turn-on-auto-fill)
-    (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
-    (add-hook 'text-mode-hook 'turn-on-auto-fill)
+	  :hook
+	  (org-mode . toc-org-mode)
+	  (markdown-mode . toc-org-mode))
   #+END_SRC
 
 * Olivetti mode
@@ -149,8 +139,7 @@
 						:weight 'regular)
   #+END_SRC
 
-  The changes above makes some parts of Org buffers look wrong since they are
-  better off being monospaced - see Org-mode for how to fix.
+  The changes above makes some parts of Org buffers look wrong since they are  better off being monospaced - see Org-mode for how to fix.
 
 * Handle whitespace
 
@@ -159,8 +148,9 @@
   #+BEGIN_SRC emacs-lisp
 	(use-package ws-butler
 	  :ensure t
-	  :hook ((text-mode . ws-butler-mode)
-			 (prog-mode . ws-butler-mode)))
+	  :hook
+	  (text-mode . ws-butler-mode)
+	  (prog-mode . ws-butler-mode))
   #+END_SRC
 
 * YAML mode
