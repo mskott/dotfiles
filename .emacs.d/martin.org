@@ -1,6 +1,6 @@
 #+TITLE: Martins EMACS configuration
 
-* Table of contents                                                     :TOC:
+* Table of contents                                            :TOC:noexport:
 - [[#emacs][EMACS]]
 - [[#markdown][Markdown]]
 - [[#magit][Magit]]
@@ -57,15 +57,37 @@
 
   [[https://orgmode.org/][Org Mode]]
 
-  #+BEGIN_SRC emacs-lisp
-    (use-package org
-      :ensure t
-      :custom
-      (org-src-tab-acts-natively t)
-      (org-return-follows-link t) ; Follow links when pressing RET
-      :bind (("C-c l" . org-store-link)
-	     ("C-c a" . org-agenda)
-	     ("C-c c" . org-capture)))
+  Use ~describe-face~ to lookup faces and their use.
+
+#+BEGIN_SRC emacs-lisp
+  (defun ms/org-font-setup ()
+	;; Ensure some things are rendered as fixed-pitch even in variable-pitch mode
+    ;; Should be done with use-package :custom-face, but I couldn't get it to work with multiple faces
+	(set-face-attribute 'org-block nil				:foreground nil :inherit 'fixed-pitch)
+	(set-face-attribute 'org-checkbox nil			:inherit 'fixed-pitch)
+	(set-face-attribute 'org-code nil				:inherit '(shadow fixed-pitch))
+	(set-face-attribute 'org-meta-line nil			:inherit '(font-lock-comment-face fixed-pitch))
+	(set-face-attribute 'org-special-keyword nil	:inherit '(font-lock-comment-face fixed-pitch))
+	(set-face-attribute 'org-table nil				:inherit '(shadow fixed-pitch))
+	(set-face-attribute 'org-verbatim nil			:inherit '(shadow fixed-pitch)))
+
+  (defun ms/org-mode-setup ()
+	(variable-pitch-mode 1)) ; Display text in a variable pitch
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package org
+	:ensure t
+	:custom
+	(org-src-tab-acts-natively t)
+	(org-return-follows-link t) ; Follow links when pressing RET
+	:bind (("C-c l" . org-store-link)
+		   ("C-c a" . org-agenda)
+		   ("C-c c" . org-capture))
+	:hook
+	(org-mode . ms/org-mode-setup)
+	:config
+	(ms/org-font-setup))
   #+END_SRC
 
   [[https://github.com/snosov1/toc-org][Toc Org]]
@@ -107,10 +129,25 @@
   Fonts are strange - be carefull when setting hight, 20 is way too small.
   
   #+BEGIN_SRC emacs-lisp
+	;; Default face
 	(set-face-attribute 'default nil
 						:font "DejaVu Sans Mono"
 						:height 100)
+
+	;; Fixed pitch face (aka. monospace text)
+	(set-face-attribute 'fixed-pitch nil
+						:font "DejaVu Sans Mono"
+						:height 100)
+
+	;; Variable pitch face - good for documents
+	(set-face-attribute 'variable-pitch nil
+						:font "Cantarell"
+						:height 110
+						:weight 'regular)
   #+END_SRC
+
+  The changes above makes some parts of Org buffers look wrong since they are
+  better off being monospaced - see Org-mode for how to fix.
 
 * Handle whitespace
 
