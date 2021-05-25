@@ -36,10 +36,13 @@
   [[https://jblevins.org/projects/markdown-mode/][Markdown-mode]]
 
   #+BEGIN_SRC emacs-lisp
-    (use-package markdown-mode
-      :ensure t
-      :custom
-      (markdown-asymmetric-header t)) ; Only place header markup at begging of line
+	(use-package markdown-mode
+	  :ensure t
+	  :custom
+	  (markdown-asymmetric-header t) ; Only place header markup at begging of line
+	  :hook
+	  (markdown-mode . variable-pitch-mode)
+	  )
   #+END_SRC
 
 * Magit
