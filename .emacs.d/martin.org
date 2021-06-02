@@ -2,6 +2,7 @@
 
 * Table of contents                                            :TOC:noexport:
 - [[#emacs][EMACS]]
+- [[#ivy-mode][Ivy mode]]
 - [[#markdown][Markdown]]
 - [[#magit][Magit]]
 - [[#org-mode][Org Mode]]
@@ -9,6 +10,7 @@
 - [[#fonts][Fonts]]
 - [[#handle-whitespace][Handle whitespace]]
 - [[#yaml-mode][YAML mode]]
+- [[#spellchecking][Spellchecking]]
 
 * EMACS
 
@@ -28,6 +30,17 @@
 	(tool-bar-mode -1)					; Disable the toolbar
 	(column-number-mode t)				; Display column number in modeline
   #+END_SRC
+
+* Ivy mode
+
+[[https://oremacs.com/swiper/][Ivy mode manual]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package ivy
+	:ensure t
+	:config
+	(ivy-mode 1))
+#+END_SRC
 
 * Markdown
 
@@ -53,7 +66,6 @@
 	(use-package magit
 	  :ensure t)
   #+END_SRC
-
 
 * Org Mode
 
@@ -156,3 +168,22 @@
 	(use-package yaml-mode
 	  :ensure t)
   #+END_SRC
+
+* Spellchecking
+
+#+BEGIN_SRC emacs-lisp
+  (use-package flyspell
+	:ensure t
+	:hook
+	(text-mode . flyspell-mode)
+	)
+
+  (use-package flyspell-correct
+	:after flyspell
+	:ensure t
+	:bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+
+  (use-package flyspell-correct-ivy
+	:after flyspell-correct
+	:ensure t)
+#+END_SRC
