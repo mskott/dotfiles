@@ -10,6 +10,7 @@
 - [[#fonts][Fonts]]
 - [[#handle-whitespace][Handle whitespace]]
 - [[#yaml-mode][YAML mode]]
+- [[#json-mode][JSON mode]]
 - [[#spellchecking][Spellchecking]]
 
 * EMACS
@@ -33,13 +34,32 @@
 
 * Ivy mode
 
-[[https://oremacs.com/swiper/][Ivy mode manual]]
+  [[https://oremacs.com/swiper/][Ivy mode manual]]
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package ivy
+	  :ensure t
+	  :config
+	  (ivy-mode 1))
+  #+END_SRC
+
+ [[https://github.com/Yevgnen/ivy-rich][Ivy Rich]]
 
 #+BEGIN_SRC emacs-lisp
-  (use-package ivy
-	:ensure t
-	:config
-	(ivy-mode 1))
+  ;; (use-package ivy-rich
+  ;;   :ensure t
+  ;;   :after ivy
+  ;;   :init
+  ;;   (ivy-rich-mode 1)
+  ;;   (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+  ;;   )
+#+END_SRC
+
+[[https://github.com/wilfred/helpful][Helpful]] makes Emacs help functions nice
+
+#+BEGIN_SRC emacs-lisp
+;  (use-package helpful
+;	:ensure t)
 #+END_SRC
 
 * Markdown
@@ -115,6 +135,14 @@
 	  (markdown-mode . toc-org-mode))
   #+END_SRC
 
+  Org-mode likes to use htlmize when publishing documents with code in them.
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package htmlize
+	  :ensure t
+	  :after org)
+  #+END_SRC
+
 * Olivetti mode
 
   #+BEGIN_SRC emacs-lisp
@@ -169,21 +197,29 @@
 	  :ensure t)
   #+END_SRC
 
-* Spellchecking
+* JSON mode
 
 #+BEGIN_SRC emacs-lisp
-  (use-package flyspell
+  (use-package json-mode
 	:ensure t
-	:hook
-	(text-mode . flyspell-mode)
 	)
-
-  (use-package flyspell-correct
-	:after flyspell
-	:ensure t
-	:bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
-
-  (use-package flyspell-correct-ivy
-	:after flyspell-correct
-	:ensure t)
 #+END_SRC
+
+* Spellchecking
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package flyspell
+	  :ensure t
+	  :hook
+	  (text-mode . flyspell-mode)
+	  )
+
+	(use-package flyspell-correct
+	  :after flyspell
+	  :ensure t
+	  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+
+	(use-package flyspell-correct-ivy
+	  :after flyspell-correct
+	  :ensure t)
+  #+END_SRC
