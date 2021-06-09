@@ -210,8 +210,8 @@
   #+BEGIN_SRC emacs-lisp
 	(use-package flyspell
 	  :ensure t
-	  :hook
-	  (text-mode . flyspell-mode)
+	  ;; :hook
+	  ;; (text-mode . flyspell-mode)
 	  )
 
 	(use-package flyspell-correct
