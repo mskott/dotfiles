@@ -143,6 +143,16 @@
 	  :after org)
   #+END_SRC
 
+  #+begin_src emacs-lisp
+	(use-package org-journal
+	  :ensure t
+	  :config
+	  (setq org-journal-dir "~/Org/journal/"
+			org-journal-file-format "%Y-%m.org"
+			org-journal-date-format "%Y-%m-%d"
+			org-journal-file-type 'monthly))
+  #+end_src
+
 * Olivetti mode
 
   #+BEGIN_SRC emacs-lisp
