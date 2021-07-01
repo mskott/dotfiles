@@ -150,7 +150,8 @@
 	  (setq org-journal-dir "~/Org/journal/"
 			org-journal-file-format "%Y-%m.org"
 			org-journal-date-format "%Y-%m-%d"
-			org-journal-file-type 'monthly))
+			org-journal-file-type 'monthly
+			org-journal-carryover-items ""))
   #+end_src
 
 * Olivetti mode
