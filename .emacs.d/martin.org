@@ -119,7 +119,8 @@
 	  (org-mode . variable-pitch-mode)	; Display text in a variable pitch
 	  (org-mode . visual-line-mode)		; Better handling of long line
 	  :config
-	  (ms/org-font-setup))
+	  (ms/org-font-setup)
+	  (setq org-agenda-files (list "~/Org" "~/Org/journal" "~/Org/Norlys")))
   #+END_SRC
 
   [[https://github.com/snosov1/toc-org][Toc Org]]
