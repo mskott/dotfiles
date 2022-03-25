@@ -163,7 +163,7 @@
 	(use-package olivetti
 	  :ensure t
 	  :hook
-	  (text-mode . olivetti-mode)
+	  (org-mode . olivetti-mode)
 	  :custom
 	  (olivetti-body-width 120)) ; Make text body a bit wider
   #+END_SRC
