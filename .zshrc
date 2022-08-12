@@ -102,8 +102,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Red Hat username for use by Minishift
-export MINISHIFT_USERNAME=martin.skott
+## Red Hat username for use by Minishift
+#export MINISHIFT_USERNAME=martin.skott
+
+## Setup bat
+export BAT_THEME="Solarized (dark)"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/martin/.sdkman"
 [[ -s "/home/martin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/martin/.sdkman/bin/sdkman-init.sh"
