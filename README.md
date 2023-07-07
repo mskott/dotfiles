@@ -11,3 +11,4 @@ Modes and packages:
 
 - [use-package](https://jwiegley.github.io/use-package/)
 
+## ZSH
