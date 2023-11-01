@@ -6,6 +6,9 @@
 - [[#markdown][Markdown]]
 - [[#magit][Magit]]
 - [[#org-mode][Org Mode]]
+  - [[#custom-fonts-for-org][Custom fonts for Org]]
+  -  [[#general-org-configuration][General Org configuration]]
+  - [[#org-journal-mode][Org Journal mode]]
 - [[#olivetti-mode][Olivetti mode]]
 - [[#fonts][Fonts]]
 - [[#handle-whitespace][Handle whitespace]]
@@ -92,7 +95,12 @@
 
   [[https://orgmode.org/][Org Mode]]
 
+** Custom fonts for Org
+
   Use ~describe-face~ to lookup faces and their use.
+
+Ensure some things are rendered as fixed-pitch even in variable-pitch mode
+Should be done with use-package :custom-face, but I couldn't get it to work with multiple faces
 
   #+BEGIN_SRC emacs-lisp
 	(defun ms/org-font-setup ()
@@ -106,6 +114,8 @@
 	  (set-face-attribute 'org-table nil			:inherit '(shadow fixed-pitch))
 	  (set-face-attribute 'org-verbatim nil			:inherit '(shadow fixed-pitch)))
   #+END_SRC
+
+**  General Org configuration
 
   #+BEGIN_SRC emacs-lisp
 	(use-package org
@@ -121,7 +131,7 @@
 	  (org-mode . visual-line-mode)		; Better handling of long line
 	  :config
 	  (ms/org-font-setup)
-	  (setq org-agenda-files (list "~/Org" "~/Org/journal" "~/Org/Norlys")))
+	  (setq org-agenda-files (list "~/Org" "~/Org/journal")))
   #+END_SRC
 
   [[https://github.com/snosov1/toc-org][Toc Org]]
@@ -144,6 +154,8 @@
 	  :ensure t
 	  :after org)
   #+END_SRC
+
+** Org Journal mode
 
   #+begin_src emacs-lisp
 	(use-package org-journal
