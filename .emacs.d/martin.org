@@ -34,6 +34,7 @@
 	(set-default-coding-systems 'utf-8)	; Default to UTF-8 encoding
 	(tool-bar-mode -1)					; Disable the toolbar
 	(column-number-mode t)				; Display column number in modeline
+	(global-hl-line-mode t)				; Always highlight current line
   #+END_SRC
 
 * Ivy mode
