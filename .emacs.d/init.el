@@ -10,9 +10,13 @@
   (package-install 'use-package))
 (require 'use-package)
 
+;; Configure use-package
+(eval-and-compile
+  (setq use-package-always-ensure t ; No need to :ensure t all packages
+        use-package-expand-minimally t))
+
 ;; Install Org-mode
-(use-package org
-  :ensure t)
+(use-package org)
 
 ;; Load org-based configuration
 (org-babel-load-file (expand-file-name "martin.org" user-emacs-directory))

@@ -46,7 +46,6 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 
 #+begin_src emacs-lisp
   (use-package solarized-theme
-	:ensure t
 	:init
 	(setq solarized-scale-markdown-headlines t)
 	:config
@@ -60,7 +59,6 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 
   #+BEGIN_SRC emacs-lisp
 	(use-package ivy
-	  :ensure t
 	  :config
 	  (ivy-mode 1))
   #+END_SRC
@@ -90,7 +88,6 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 
   #+BEGIN_SRC emacs-lisp
 	(use-package markdown-mode
-	  :ensure t
 	  :custom
 	  (markdown-asymmetric-header t)		; Only place header markup at begging of line
 	  :hook
@@ -104,8 +101,7 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
   [[https://emacsair.me/2017/09/01/magit-walk-through/][- Magit walk through]]
 
   #+BEGIN_SRC emacs-lisp
-	(use-package magit
-	  :ensure t)
+	(use-package magit)
   #+END_SRC
 
 * Org Mode
@@ -116,7 +112,6 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 
   #+BEGIN_SRC emacs-lisp
 	(use-package org
-	  :ensure t
 	  :custom
 	  (org-src-tab-acts-natively t)
 	  (org-return-follows-link t)			; Follow links when pressing RET
@@ -135,7 +130,6 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 
   #+BEGIN_SRC emacs-lisp
 	(use-package toc-org
-	  :ensure t
 	  :after org
 	  :hook
 	  (org-mode . toc-org-mode)
@@ -146,7 +140,6 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 
   #+BEGIN_SRC emacs-lisp
 	(use-package htmlize
-	  :ensure t
 	  :after org)
   #+END_SRC
 
@@ -154,7 +147,6 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 
   #+begin_src emacs-lisp
 	(use-package org-journal
-	  :ensure t
 	  :after org
 	  :config
 	  (setq org-journal-dir "~/Org/journal/"
@@ -186,7 +178,6 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 
   #+BEGIN_SRC emacs-lisp
 	(use-package ws-butler
-	  :ensure t
 	  :hook
 	  (text-mode . ws-butler-mode)
 	  (prog-mode . ws-butler-mode))
@@ -195,35 +186,29 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 * YAML mode
 
   #+BEGIN_SRC emacs-lisp
-	(use-package yaml-mode
-	  :ensure t)
+	(use-package yaml-mode)
   #+END_SRC
 
 * JSON mode
 
 #+BEGIN_SRC emacs-lisp
-  (use-package json-mode
-	:ensure t
-	)
+  (use-package json-mode)
 #+END_SRC
 
 * Spellchecking
 
   #+BEGIN_SRC emacs-lisp
 	(use-package flyspell
-	  :ensure t
 	  ;; :hook
 	  ;; (text-mode . flyspell-mode)
 	  )
 
 	(use-package flyspell-correct
 	  :after flyspell
-	  :ensure t
 	  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
 
 	(use-package flyspell-correct-ivy
-	  :after flyspell-correct
-	  :ensure t)
+	  :after flyspell-correct)
   #+END_SRC
 
 * Treemacs
@@ -233,7 +218,6 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 
   #+begin_src emacs-lisp
 	(use-package treemacs
-	  :ensure t
 	  :defer t
 	  :init
 	  :config
@@ -315,6 +299,5 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 			("C-x t M-t" . treemacs-find-tag)))
 
 	(use-package treemacs-magit
-	  :after (treemacs magit)
-	  :ensure t)
+	  :after (treemacs magit))
   #+end_src
