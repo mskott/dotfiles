@@ -6,10 +6,8 @@
 - [[#markdown][Markdown]]
 - [[#magit][Magit]]
 - [[#org-mode][Org Mode]]
-  - [[#custom-fonts-for-org][Custom fonts for Org]]
   -  [[#general-org-configuration][General Org configuration]]
   - [[#org-journal-mode][Org Journal mode]]
-- [[#olivetti-mode][Olivetti mode]]
 - [[#fonts][Fonts]]
 - [[#handle-whitespace][Handle whitespace]]
 - [[#yaml-mode][YAML mode]]
@@ -77,7 +75,6 @@
 	  :custom
 	  (markdown-asymmetric-header t)		; Only place header markup at begging of line
 	  :hook
-	  (markdown-mode . variable-pitch-mode)	; Display text in a variable pitch
 	  (markdown-mode . visual-line-mode)	; Better handling of long line
 	  )
   #+END_SRC
@@ -96,26 +93,6 @@
 
   [[https://orgmode.org/][Org Mode]]
 
-** Custom fonts for Org
-
-  Use ~describe-face~ to lookup faces and their use.
-
-Ensure some things are rendered as fixed-pitch even in variable-pitch mode
-Should be done with use-package :custom-face, but I couldn't get it to work with multiple faces
-
-  #+BEGIN_SRC emacs-lisp
-	(defun ms/org-font-setup ()
-	  ;; Ensure some things are rendered as fixed-pitch even in variable-pitch mode
-	  ;; Should be done with use-package :custom-face, but I couldn't get it to work with multiple faces
-	  (set-face-attribute 'org-block nil			:foreground nil :inherit 'fixed-pitch)
-	  (set-face-attribute 'org-checkbox nil			:inherit 'fixed-pitch)
-	  (set-face-attribute 'org-code nil				:inherit '(shadow fixed-pitch))
-	  (set-face-attribute 'org-meta-line nil		:inherit '(font-lock-comment-face fixed-pitch))
-	  (set-face-attribute 'org-special-keyword nil	:inherit '(font-lock-comment-face fixed-pitch))
-	  (set-face-attribute 'org-table nil			:inherit '(shadow fixed-pitch))
-	  (set-face-attribute 'org-verbatim nil			:inherit '(shadow fixed-pitch)))
-  #+END_SRC
-
 **  General Org configuration
 
   #+BEGIN_SRC emacs-lisp
@@ -128,10 +105,8 @@ Should be done with use-package :custom-face, but I couldn't get it to work with
 			 ("C-c a" . org-agenda)
 			 ("C-c c" . org-capture))
 	  :hook
-	  (org-mode . variable-pitch-mode)	; Display text in a variable pitch
 	  (org-mode . visual-line-mode)		; Better handling of long line
 	  :config
-	  (ms/org-font-setup)
 	  (setq org-agenda-files (list "~/Org" "~/Org/journal")))
   #+END_SRC
 
@@ -170,17 +145,6 @@ Should be done with use-package :custom-face, but I couldn't get it to work with
 			org-journal-carryover-items ""))
   #+end_src
 
-* Olivetti mode
-
-  #+BEGIN_SRC emacs-lisp
-	(use-package olivetti
-	  :ensure t
-	  :hook
-	  (org-mode . olivetti-mode)
-	  :custom
-	  (olivetti-body-width 120)) ; Make text body a bit wider
-  #+END_SRC
-
 * Fonts
 
   Fonts are strange - be carefull when setting hight, 20 is way too small.
@@ -195,15 +159,7 @@ Should be done with use-package :custom-face, but I couldn't get it to work with
 	(set-face-attribute 'fixed-pitch nil
 						:font "DejaVu Sans Mono"
 						:height 100)
-
-	;; Variable pitch face - good for documents
-	(set-face-attribute 'variable-pitch nil
-						:font "Cantarell"
-						:height 110
-						:weight 'regular)
   #+END_SRC
-
-  The changes above makes some parts of Org buffers look wrong since they are  better off being monospaced - see Org-mode for how to fix.
 
 * Handle whitespace
 
