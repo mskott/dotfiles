@@ -23,5 +23,5 @@
 (garbage-collect)
 
 ;; Keep customized settings out of Git
-(setq custom-file "~/.emacs.d/emacs-custom.el")
+(setq custom-file (expand-file-name "emacs-custom.el" user-emacs-directory))
 (load custom-file)
