@@ -2,6 +2,8 @@
 
 * Table of contents                                            :TOC:noexport:
 - [[#emacs][EMACS]]
+- [[#use-package][Use package]]
+- [[#colour-theme][Colour theme]]
 - [[#ivy-mode][Ivy mode]]
 - [[#markdown][Markdown]]
 - [[#magit][Magit]]
@@ -34,6 +36,23 @@
 	(column-number-mode t)				; Display column number in modeline
 	(global-hl-line-mode t)				; Always highlight current line
   #+END_SRC
+
+* Use package
+[[https://github.com/jwiegley/use-package][Use package]] is configured in [[file:init.el][init.el]]. Here is [[https://ianyepan.github.io/posts/setting-up-use-package/][a simple tutorial]].
+
+* Colour theme
+
+Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
+
+#+begin_src emacs-lisp
+  (use-package solarized-theme
+	:ensure t
+	:init
+	(setq solarized-scale-markdown-headlines t)
+	:config
+	(load-theme 'solarized-dark t)
+	)
+#+end_src
 
 * Ivy mode
 
