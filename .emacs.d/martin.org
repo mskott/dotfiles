@@ -16,6 +16,7 @@
 - [[#json-mode][JSON mode]]
 - [[#spellchecking][Spellchecking]]
 - [[#treemacs][Treemacs]]
+- [[#completion-using-company-mode][Completion using company-mode]]
 
 * EMACS
 
@@ -301,3 +302,10 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 	(use-package treemacs-magit
 	  :after (treemacs magit))
   #+end_src
+
+* Completion using company-mode
+Configure in-buffer completion using [[https://company-mode.github.io/][company-mode]].
+
+#+begin_src emacs-lisp
+  (use-package company)
+#+end_src
