@@ -160,16 +160,17 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 * Fonts
 
   Fonts are strange - be carefull when setting hight, 20 is way too small.
+  _Roboto Mono_ is available in Fedora in the package ~google-roboto-mono-fonts~. Another option is _Source Code Pro_ which also looks good.
   
   #+BEGIN_SRC emacs-lisp
     ;; Default face
     (set-face-attribute 'default nil
-                        :font "DejaVu Sans Mono"
+                        :font "Roboto Mono"
                         :height 120)
 
     ;; Fixed pitch face (aka. monospace text)
     (set-face-attribute 'fixed-pitch nil
-                        :font "DejaVu Sans Mono"
+                        :font "Roboto Mono"
                         :height 120)
   #+END_SRC
 
