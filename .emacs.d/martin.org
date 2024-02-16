@@ -26,7 +26,7 @@
 	(setq-default
 	 inhibit-startup-screen t			; Disable startup screen
 	 tab-width 4						; Smaller tabs
-	 indend-tabs-mode nil				; Spaces instead of tabs
+	 indent-tabs-mode nil				; Spaces instead of tabs
 	 visible-bell t						; No beep
 	 )
 
@@ -162,15 +162,15 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
   Fonts are strange - be carefull when setting hight, 20 is way too small.
   
   #+BEGIN_SRC emacs-lisp
-	;; Default face
-	(set-face-attribute 'default nil
-						:font "DejaVu Sans Mono"
-						:height 100)
+    ;; Default face
+    (set-face-attribute 'default nil
+                        :font "DejaVu Sans Mono"
+                        :height 120)
 
-	;; Fixed pitch face (aka. monospace text)
-	(set-face-attribute 'fixed-pitch nil
-						:font "DejaVu Sans Mono"
-						:height 100)
+    ;; Fixed pitch face (aka. monospace text)
+    (set-face-attribute 'fixed-pitch nil
+                        :font "DejaVu Sans Mono"
+                        :height 120)
   #+END_SRC
 
 * Handle whitespace
