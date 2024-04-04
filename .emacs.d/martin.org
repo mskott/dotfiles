@@ -144,6 +144,14 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 	  :after org)
   #+END_SRC
 
+  Make Org look modern
+  #+begin_src emacs-lisp
+    (use-package org-modern
+      :after org
+      :hook
+      (org-mode . org-modern-mode))
+  #+end_src
+
 ** Org Journal mode
 
   #+begin_src emacs-lisp
