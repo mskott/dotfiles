@@ -8,7 +8,7 @@
 - [[#markdown][Markdown]]
 - [[#magit][Magit]]
 - [[#org-mode][Org Mode]]
-  -  [[#general-org-configuration][General Org configuration]]
+  - [[#general-org-configuration][General Org configuration]]
   - [[#org-journal-mode][Org Journal mode]]
 - [[#fonts][Fonts]]
 - [[#handle-whitespace][Handle whitespace]]
@@ -109,20 +109,21 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 
   [[https://orgmode.org/][Org Mode]]
 
-**  General Org configuration
+** General Org configuration
 
   #+BEGIN_SRC emacs-lisp
-	(use-package org
-	  :custom
-	  (org-src-tab-acts-natively t)
-	  (org-return-follows-link t)			; Follow links when pressing RET
-	  :bind (("C-c l" . org-store-link)
-			 ("C-c a" . org-agenda)
-			 ("C-c c" . org-capture))
-	  :hook
-	  (org-mode . visual-line-mode)		; Better handling of long line
-	  :config
-	  (setq org-agenda-files (list "~/Org" "~/Org/journal")))
+    (use-package org
+      :custom
+      (org-src-tab-acts-natively t)
+      (org-return-follows-link t)			; Follow links when pressing RET
+      :bind (("C-c l" . org-store-link)
+             ("C-c a" . org-agenda)
+             ("C-c c" . org-capture))
+      :hook
+      (org-mode . visual-line-mode)		; Better handling of long line
+      :config
+      (setq org-agenda-files (list "~/Org" "~/Org/journal" "~/Org/Customers")
+            org-refile-targets '((org-agenda-files . (:maxlevel . 2)))))
   #+END_SRC
 
   [[https://github.com/snosov1/toc-org][Toc Org]]
