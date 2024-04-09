@@ -319,5 +319,7 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
 Configure in-buffer completion using [[https://company-mode.github.io/][company-mode]].
 
 #+begin_src emacs-lisp
-  (use-package company)
+  (use-package company
+    :config
+    (global-company-mode t))
 #+end_src
