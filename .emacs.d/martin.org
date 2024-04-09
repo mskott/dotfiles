@@ -123,7 +123,9 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
       (org-mode . visual-line-mode)		; Better handling of long line
       :config
       (setq org-agenda-files (list "~/Org" "~/Org/journal" "~/Org/Customers")
-            org-refile-targets '((org-agenda-files . (:maxlevel . 2)))))
+            org-refile-targets '((org-agenda-files . (:maxlevel . 2)))
+            org-special-ctrl-a/e t ; Change C-a/C-e behaviour on headlines
+            ))
   #+END_SRC
 
   [[https://github.com/snosov1/toc-org][Toc Org]]
