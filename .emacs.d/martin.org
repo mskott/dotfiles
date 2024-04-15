@@ -23,19 +23,20 @@
   Hint: align comments using ~align-regexp~
 
   #+BEGIN_SRC emacs-lisp
-	(setq-default
-	 inhibit-startup-screen t			; Disable startup screen
-	 tab-width 4						; Smaller tabs
-	 indent-tabs-mode nil				; Spaces instead of tabs
-	 visible-bell t						; No beep
-	 )
+    (setq-default
+     inhibit-startup-screen t			; Disable startup screen
+     tab-width 4						; Smaller tabs
+     indent-tabs-mode nil				; Spaces instead of tabs
+     visible-bell t						; No beep
+     )
 
-	(global-auto-revert-mode t)			; Reload changed files
-	(electric-pair-mode)				; Smart handling of parens
-	(set-default-coding-systems 'utf-8)	; Default to UTF-8 encoding
-	(tool-bar-mode -1)					; Disable the toolbar
-	(column-number-mode t)				; Display column number in modeline
-	(global-hl-line-mode t)				; Always highlight current line
+    (global-auto-revert-mode t)			; Reload changed files
+    (electric-pair-mode)				; Smart handling of parens
+    (set-default-coding-systems 'utf-8)	; Default to UTF-8 encoding
+    (tool-bar-mode -1)					; Disable the toolbar
+    (scroll-bar-mode -1)                ; Disable vertical scroll bars
+    (column-number-mode t)				; Display column number in modeline
+    (global-hl-line-mode t)				; Always highlight current line
   #+END_SRC
 
 * Use package
