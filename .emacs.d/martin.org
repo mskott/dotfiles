@@ -116,15 +116,16 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
     (use-package org
       :custom
       (org-src-tab-acts-natively t)
-      (org-return-follows-link t)			; Follow links when pressing RET
+      (org-return-follows-link t)	; Follow links when pressing RET
+      (org-reverse-note-order t)    ; Store new notes in beginning of entry
       :bind (("C-c l" . org-store-link)
              ("C-c a" . org-agenda)
              ("C-c c" . org-capture))
       :hook
-      (org-mode . visual-line-mode)		; Better handling of long line
+      (org-mode . visual-line-mode)	; Better handling of long line
       :config
       (setq org-default-notes-file "~/Org/inbox.org"
-            org-agenda-files (list "~/Org" "~/Org/journal" "~/Org/Customers")
+            org-agenda-files (list "~/Org" "~/Org/journal" "~/Org/Customers" "~/Org/Products")
             org-refile-targets '((org-agenda-files . (:maxlevel . 2)))
             org-special-ctrl-a/e t ; Change C-a/C-e behaviour on headlines
             ))
