@@ -44,14 +44,14 @@
 
 * Colour theme
 
-Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]
+Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]. Both ~solarized-dark~ and ~solarized-ligth~ are good.
 
 #+begin_src emacs-lisp
   (use-package solarized-theme
 	:init
 	(setq solarized-scale-markdown-headlines t)
 	:config
-	(load-theme 'solarized-dark t)
+	(load-theme 'solarized-light t)
 	)
 #+end_src
 
