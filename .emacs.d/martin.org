@@ -17,6 +17,9 @@
 - [[#spellchecking][Spellchecking]]
 - [[#treemacs][Treemacs]]
 - [[#completion-using-company-mode][Completion using company-mode]]
+- [[#eglot][Eglot]]
+- [[#progamming-languages][Progamming languages]]
+  - [[#golang][Golang]]
 
 * EMACS
 
@@ -325,4 +328,22 @@ Configure in-buffer completion using [[https://company-mode.github.io/][company-
   (use-package company
     :config
     (global-company-mode t))
+#+end_src
+
+* Eglot
+Language server fedora packages:
+- Go :: golang-x-tools-gopls
+- Python :: python3-lsp-server
+
+#+begin_src emacs-lisp
+  (use-package eglot
+    :config
+    (add-to-list 'eglot-server-programs
+                 '(yaml-mode . ("ansible-language-server" "--stdio"))))
+#+end_src
+
+* Progamming languages
+** Golang
+#+begin_src emacs-lisp
+  (use-package go-mode)
 #+end_src
