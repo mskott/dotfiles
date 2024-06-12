@@ -335,6 +335,7 @@ Language server fedora packages:
 - Go :: golang-x-tools-gopls
 - Python :: python3-lsp-server
 
+The language server for Ansible is not packaged for Fedora. It can be installed using ~npm i @ansible/ansible-language-server~ and adding its bin/ to the PATH.
 #+begin_src emacs-lisp
   (use-package eglot
     :config
@@ -345,5 +346,7 @@ Language server fedora packages:
 * Progamming languages
 ** Golang
 #+begin_src emacs-lisp
-  (use-package go-mode)
+  (use-package go-mode
+    :hook
+    (go-mode . eglot-ensure))
 #+end_src
