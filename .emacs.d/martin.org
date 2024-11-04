@@ -155,23 +155,23 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]. Bot
 
   Make Org look modern
   #+begin_src emacs-lisp
-    (use-package org-modern
-      :after org
-      :hook
-      (org-mode . org-modern-mode))
+    ;(use-package org-modern
+    ;  :after org
+    ;  :hook
+    ;  (org-mode . org-modern-mode))
   #+end_src
 
 ** Org Journal mode
 
   #+begin_src emacs-lisp
-	(use-package org-journal
-	  :after org
-	  :config
-	  (setq org-journal-dir "~/Org/journal/"
-			org-journal-file-format "%Y-%m.org"
-			org-journal-date-format "%Y-%m-%d"
-			org-journal-file-type 'monthly
-			org-journal-carryover-items ""))
+    ;; (use-package org-journal
+    ;;   :after org
+    ;;   :config
+    ;;   (setq org-journal-dir "~/Org/journal/"
+    ;; 		org-journal-file-format "%Y-%m.org"
+    ;; 		org-journal-date-format "%Y-%m-%d"
+    ;; 		org-journal-file-type 'monthly
+    ;; 		org-journal-carryover-items ""))
   #+end_src
 
 * Fonts
