@@ -80,13 +80,6 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]. Bot
   ;;   )
 #+END_SRC
 
-[[https://github.com/wilfred/helpful][Helpful]] makes Emacs help functions nice
-
-#+BEGIN_SRC emacs-lisp
-;  (use-package helpful
-;	:ensure t)
-#+END_SRC
-
 * Markdown
 
   [[https://jblevins.org/projects/markdown-mode/][Markdown-mode]]
