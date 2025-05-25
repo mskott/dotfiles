@@ -1,0 +1,31 @@
+---
+- name: Setup localhost
+  hosts: localhost
+  tasks:
+    - name: Enable starship COPR
+      become: true
+      ansible.builtin.command: dnf copr enable -y chronoscrat/starship
+      args:
+        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:chronoscrat:starship.repo
+
+    - name: Install common packages
+      become: true
+      ansible.builtin.package:
+        name:
+          - emacs
+          - bat
+          - btop
+          - google-roboto-mono-fonts
+          - starship
+        state: present
+
+    - name: Symlink dotfiles
+      ansible.builtin.file:
+        src: '{{ playbook_dir }}/{{ item }}'
+        dest: '{{ ansible_env.HOME }}/{{ item }}'
+        state: link
+      loop:
+        - .bashrc.d
+        - .emacs.d
+        - .gitconfig
+        - .gitexcludes
