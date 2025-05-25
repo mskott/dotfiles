@@ -7,7 +7,7 @@ Inspiration:
 
 ## Setup
 
-Install `ansible` and run `ansible-playbook -K setup.yaml`.
+Install `ansible` and run `ansible-playbook -K [--tags home] setup.yaml`.
 
 ## EMACS
 

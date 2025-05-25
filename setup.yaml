@@ -7,6 +7,7 @@
       ansible.builtin.command: dnf copr enable -y chronoscrat/starship
       args:
         creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:chronoscrat:starship.repo
+      tags: always
 
     - name: Install common packages
       become: true
@@ -18,6 +19,16 @@
           - google-roboto-mono-fonts
           - starship
         state: present
+      tags: always
+
+    - name: Install home packages
+      become: true
+      ansible.builtin.package:
+        name:
+          - vorta
+          - shotwell
+        state: present
+      tags: home
 
     - name: Symlink dotfiles
       ansible.builtin.file:
@@ -29,3 +40,4 @@
         - .emacs.d
         - .gitconfig
         - .gitexcludes
+      tags: always
