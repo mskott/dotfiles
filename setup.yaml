@@ -38,6 +38,15 @@
       loop:
         - .bashrc.d
         - .emacs.d
-        - .gitconfig
         - .gitexcludes
+        - .config/git
       tags: always
+
+    - name: Symlink Git user config
+      ansible.builtin.file:
+        src: '{{ playbook_dir }}/.config/git/user-config.{{ ansible_run_tags | first }}'
+        dest: '{{ playbook_dir }}/.config/git/user-config'
+        state: link
+      tags:
+        - home
+        - work

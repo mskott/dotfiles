@@ -1,6 +1,5 @@
-[user]
-	name = Martin Skøtt
-	email = martin@skoett.name
+[include]
+    path = user-config
 
 [credential]
 	helper = cache --timeout 7200
