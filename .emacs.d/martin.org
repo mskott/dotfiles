@@ -20,6 +20,7 @@
 - [[#eglot][Eglot]]
 - [[#progamming-languages][Progamming languages]]
   - [[#golang][Golang]]
+  - [[#python][Python]]
 
 * EMACS
 
@@ -342,4 +343,12 @@ The language server for Ansible is not packaged for Fedora. It can be installed 
   (use-package go-mode
     :hook
     (go-mode . eglot-ensure))
+#+end_src
+
+
+** Python
+#+begin_src emacs-lisp
+  (use-package python-mode
+    :hook
+    (python-mode . eglot-ensure))
 #+end_src
