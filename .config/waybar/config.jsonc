@@ -7,12 +7,11 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "sway/scratchpad"
+        "niri/workspaces",
+        "niri/window"
     ],
     "modules-center": [
-        "sway/window"
+        "clock"
     ],
     "modules-right": [
         "idle_inhibitor",
@@ -23,9 +22,7 @@
         "memory",
         "temperature",
         "backlight",
-        "sway/language",
         "battery",
-        "clock",
         "tray"
     ],
     // Modules configuration
@@ -210,5 +207,10 @@
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		}
+    },
+    "niri/window": {
+        "rewrite": {
+            "(.*) - GNU Emacs at .*": "Emacs: $1"
+        }
     }
 }
