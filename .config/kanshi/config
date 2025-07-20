@@ -1,0 +1,8 @@
+profile "laptop" {
+        output eDP-1 enable
+}
+
+profile "home" {
+        output eDP-1 disable
+        output "Lenovo Group Limited P34w-20 VVR00PU9" enable
+}
