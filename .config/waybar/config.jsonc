@@ -23,7 +23,8 @@
         "temperature",
         "backlight",
         "battery",
-        "tray"
+        "tray",
+        "custom/power"
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -198,7 +199,8 @@
 			"shutdown": "shutdown",
 			"reboot": "reboot",
 			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
+			"hibernate": "systemctl hibernate",
+            "soft-reboot": "systemctl soft-reboot"
 		}
     },
     "niri/window": {
