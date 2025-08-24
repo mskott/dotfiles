@@ -50,3 +50,59 @@
       tags:
         - home
         - work
+
+    - name: Enable niri COPR
+      become: true
+      ansible.builtin.command: dnf copr enable -y yalter/niri
+      args:
+        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:yalter:niri.repo
+      tags: niri
+
+    - name: Install Niri and related packages
+      become: true
+      ansible.builtin.package:
+        name:
+          - niri
+          - swaybg
+          - mako
+          - kanshi
+          - pavucontrol
+          - network-manager-applet
+        state: present
+      tags: niri
+
+    - name: Create .config/systemd/user/niri.service.wants
+      ansible.builtin.file:
+        path: '{{ ansible_env.HOME }}/.config/systemd/user/niri.service.wants'
+        state: directory
+      tags: niri
+
+    - name: Symlink Niri configuration
+      ansible.builtin.file:
+        src: '{{ playbook_dir }}/.config/{{ item }}'
+        dest: '{{ ansible_env.HOME }}/.config/{{ item }}'
+        state: link
+      loop:
+        - kanshi
+        - niri
+        - waybar
+        - systemd/user/swaybg.service
+      tags: niri
+
+    - name: Setup Niri wants
+      ansible.builtin.file:
+        src: '{{ item }}'
+        dest: '{{ ansible_env.HOME }}/.config/systemd/user/niri.service.wants/{{ item | basename }}'
+        state: link
+      loop:
+        - /usr/lib/systemd/user/kanshi.service
+        - /usr/lib/systemd/user/mako.service
+        - '{{ playbook_dir }}/.config/systemd/user/swaybg.service'
+        - /usr/lib/systemd/user/waybar.service
+      tags: niri
+
+    - name: Reload systemd user session
+      ansible.builtin.systemd_service:
+        daemon_reload: true
+        scope: user
+      tags: niri
