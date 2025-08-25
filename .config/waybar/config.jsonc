@@ -16,11 +16,7 @@
     "modules-right": [
         "idle_inhibitor",
         "pulseaudio",
-        "network",
         "power-profiles-daemon",
-        "cpu",
-        "memory",
-        "temperature",
         "backlight",
         "battery",
         "tray",
