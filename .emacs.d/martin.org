@@ -326,7 +326,7 @@ Configure in-buffer completion using [[https://company-mode.github.io/][company-
 
 * Eglot
 Language server fedora packages:
-- Go :: golang-x-tools-gopls
+- Go :: gopls
 - Python :: python3-lsp-server
 
 The language server for Ansible is not packaged for Fedora. It can be installed using ~npm i @ansible/ansible-language-server~ and adding its bin/ to the PATH.
