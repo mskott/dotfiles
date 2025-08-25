@@ -2,25 +2,25 @@
 
 * Table of contents                                            :TOC:noexport:
 - [[#emacs][EMACS]]
-- [[#use-package][Use package]]
+- [[#fonts][Fonts]]
 - [[#colour-theme][Colour theme]]
+- [[#use-package][Use package]]
+- [[#treemacs][Treemacs]]
 - [[#ivy-mode][Ivy mode]]
-- [[#markdown][Markdown]]
-- [[#magit][Magit]]
 - [[#org-mode][Org Mode]]
   - [[#general-org-configuration][General Org configuration]]
   - [[#org-journal-mode][Org Journal mode]]
-- [[#fonts][Fonts]]
+- [[#markdown][Markdown]]
 - [[#handle-whitespace][Handle whitespace]]
-- [[#yaml-mode][YAML mode]]
-- [[#json-mode][JSON mode]]
 - [[#spellchecking][Spellchecking]]
-- [[#treemacs][Treemacs]]
 - [[#completion-using-company-mode][Completion using company-mode]]
+- [[#magit][Magit]]
 - [[#eglot][Eglot]]
 - [[#progamming-languages][Progamming languages]]
   - [[#golang][Golang]]
   - [[#python][Python]]
+  - [[#yaml-mode][YAML mode]]
+  - [[#json-mode][JSON mode]]
 
 * EMACS
 
@@ -43,8 +43,22 @@
     (global-hl-line-mode t)				; Always highlight current line
   #+END_SRC
 
-* Use package
-[[https://github.com/jwiegley/use-package][Use package]] is configured in [[file:init.el][init.el]]. Here is [[https://ianyepan.github.io/posts/setting-up-use-package/][a simple tutorial]].
+* Fonts
+
+  Fonts are strange - be carefull when setting hight, 20 is way too small.
+  _Roboto Mono_ is available in Fedora in the package ~google-roboto-mono-fonts~. Another option is _Source Code Pro_ which also looks good.
+
+  #+BEGIN_SRC emacs-lisp
+    ;; Default face
+    (set-face-attribute 'default nil
+                        :font "Roboto Mono"
+                        :height 120)
+
+    ;; Fixed pitch face (aka. monospace text)
+    (set-face-attribute 'fixed-pitch nil
+                        :font "Roboto Mono"
+                        :height 120)
+  #+END_SRC
 
 * Colour theme
 
@@ -59,170 +73,8 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]. Bot
 	)
 #+end_src
 
-* Ivy mode
-
-  [[https://oremacs.com/swiper/][Ivy mode manual]]
-
-  #+BEGIN_SRC emacs-lisp
-	(use-package ivy
-	  :config
-	  (ivy-mode 1))
-  #+END_SRC
-
- [[https://github.com/Yevgnen/ivy-rich][Ivy Rich]]
-
-#+BEGIN_SRC emacs-lisp
-  ;; (use-package ivy-rich
-  ;;   :ensure t
-  ;;   :after ivy
-  ;;   :init
-  ;;   (ivy-rich-mode 1)
-  ;;   (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-  ;;   )
-#+END_SRC
-
-* Markdown
-
-  [[https://jblevins.org/projects/markdown-mode/][Markdown-mode]]
-
-  #+BEGIN_SRC emacs-lisp
-	(use-package markdown-mode
-	  :custom
-	  (markdown-asymmetric-header t)		; Only place header markup at begging of line
-	  :hook
-	  (markdown-mode . visual-line-mode)	; Better handling of long line
-	  )
-  #+END_SRC
-
-* Magit
-
-  - [[https://magit.vc/][Magit]]
-  [[https://emacsair.me/2017/09/01/magit-walk-through/][- Magit walk through]]
-
-  #+BEGIN_SRC emacs-lisp
-	(use-package magit)
-  #+END_SRC
-
-* Org Mode
-
-  [[https://orgmode.org/][Org Mode]]
-
-** General Org configuration
-
-  #+BEGIN_SRC emacs-lisp
-    (use-package org
-      :custom
-      (org-src-tab-acts-natively t)
-      (org-return-follows-link t)	; Follow links when pressing RET
-      (org-reverse-note-order t)    ; Store new notes in beginning of entry
-      :bind (("C-c l" . org-store-link)
-             ("C-c a" . org-agenda)
-             ("C-c c" . org-capture))
-      :hook
-      (org-mode . visual-line-mode)	; Better handling of long line
-      :config
-      (setq org-default-notes-file "~/Org/inbox.org"
-            org-agenda-files (list "~/Org" "~/Org/journal" "~/Org/Customers" "~/Org/Products")
-            org-refile-targets '((org-agenda-files . (:maxlevel . 2)))
-            org-special-ctrl-a/e t ; Change C-a/C-e behaviour on headlines
-            ))
-  #+END_SRC
-
-  [[https://github.com/snosov1/toc-org][Toc Org]]
-
-  Use toc-org to generate table of contents. Put ~:TOC:~ tag (C-c C-q) to a heading and run ~toc-org-insert-toc~ to insert a toc
-
-  #+BEGIN_SRC emacs-lisp
-	(use-package toc-org
-	  :after org
-	  :hook
-	  (org-mode . toc-org-mode)
-	  (markdown-mode . toc-org-mode))
-  #+END_SRC
-
-  Org-mode likes to use htlmize when publishing documents with code in them.
-
-  #+BEGIN_SRC emacs-lisp
-	(use-package htmlize
-	  :after org)
-  #+END_SRC
-
-  Make Org look modern
-  #+begin_src emacs-lisp
-    ;(use-package org-modern
-    ;  :after org
-    ;  :hook
-    ;  (org-mode . org-modern-mode))
-  #+end_src
-
-** Org Journal mode
-
-  #+begin_src emacs-lisp
-    ;; (use-package org-journal
-    ;;   :after org
-    ;;   :config
-    ;;   (setq org-journal-dir "~/Org/journal/"
-    ;; 		org-journal-file-format "%Y-%m.org"
-    ;; 		org-journal-date-format "%Y-%m-%d"
-    ;; 		org-journal-file-type 'monthly
-    ;; 		org-journal-carryover-items ""))
-  #+end_src
-
-* Fonts
-
-  Fonts are strange - be carefull when setting hight, 20 is way too small.
-  _Roboto Mono_ is available in Fedora in the package ~google-roboto-mono-fonts~. Another option is _Source Code Pro_ which also looks good.
-  
-  #+BEGIN_SRC emacs-lisp
-    ;; Default face
-    (set-face-attribute 'default nil
-                        :font "Roboto Mono"
-                        :height 120)
-
-    ;; Fixed pitch face (aka. monospace text)
-    (set-face-attribute 'fixed-pitch nil
-                        :font "Roboto Mono"
-                        :height 120)
-  #+END_SRC
-
-* Handle whitespace
-
-  https://github.com/lewang/ws-butler
-
-  #+BEGIN_SRC emacs-lisp
-	(use-package ws-butler
-	  :hook
-	  (text-mode . ws-butler-mode)
-	  (prog-mode . ws-butler-mode))
-  #+END_SRC
-
-* YAML mode
-
-  #+BEGIN_SRC emacs-lisp
-	(use-package yaml-mode)
-  #+END_SRC
-
-* JSON mode
-
-#+BEGIN_SRC emacs-lisp
-  (use-package json-mode)
-#+END_SRC
-
-* Spellchecking
-
-  #+BEGIN_SRC emacs-lisp
-	(use-package flyspell
-	  ;; :hook
-	  ;; (text-mode . flyspell-mode)
-	  )
-
-	(use-package flyspell-correct
-	  :after flyspell
-	  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
-
-	(use-package flyspell-correct-ivy
-	  :after flyspell-correct)
-  #+END_SRC
+* Use package
+[[https://github.com/jwiegley/use-package][Use package]] is configured in [[file:init.el][init.el]]. Here is [[https://ianyepan.github.io/posts/setting-up-use-package/][a simple tutorial]].
 
 * Treemacs
   https://github.com/Alexander-Miller/treemacs
@@ -315,6 +167,133 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]. Bot
 	  :after (treemacs magit))
   #+end_src
 
+* Ivy mode
+
+  [[https://oremacs.com/swiper/][Ivy mode manual]]
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package ivy
+	  :config
+	  (ivy-mode 1))
+  #+END_SRC
+
+ [[https://github.com/Yevgnen/ivy-rich][Ivy Rich]]
+
+#+BEGIN_SRC emacs-lisp
+  ;; (use-package ivy-rich
+  ;;   :ensure t
+  ;;   :after ivy
+  ;;   :init
+  ;;   (ivy-rich-mode 1)
+  ;;   (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+  ;;   )
+#+END_SRC
+
+* Org Mode
+
+  [[https://orgmode.org/][Org Mode]]
+
+** General Org configuration
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package org
+      :custom
+      (org-src-tab-acts-natively t)
+      (org-return-follows-link t)	; Follow links when pressing RET
+      (org-reverse-note-order t)    ; Store new notes in beginning of entry
+      :bind (("C-c l" . org-store-link)
+             ("C-c a" . org-agenda)
+             ("C-c c" . org-capture))
+      :hook
+      (org-mode . visual-line-mode)	; Better handling of long line
+      :config
+      (setq org-default-notes-file "~/Org/inbox.org"
+            org-agenda-files (list "~/Org" "~/Org/journal" "~/Org/Customers" "~/Org/Products")
+            org-refile-targets '((org-agenda-files . (:maxlevel . 2)))
+            org-special-ctrl-a/e t ; Change C-a/C-e behaviour on headlines
+            ))
+  #+END_SRC
+
+  [[https://github.com/snosov1/toc-org][Toc Org]]
+
+  Use toc-org to generate table of contents. Put ~:TOC:~ tag (C-c C-q) to a heading and run ~toc-org-insert-toc~ to insert a toc
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package toc-org
+	  :after org
+	  :hook
+	  (org-mode . toc-org-mode)
+	  (markdown-mode . toc-org-mode))
+  #+END_SRC
+
+  Org-mode likes to use htlmize when publishing documents with code in them.
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package htmlize
+	  :after org)
+  #+END_SRC
+
+  Make Org look modern
+  #+begin_src emacs-lisp
+    ;(use-package org-modern
+    ;  :after org
+    ;  :hook
+    ;  (org-mode . org-modern-mode))
+  #+end_src
+
+** Org Journal mode
+
+  #+begin_src emacs-lisp
+    ;; (use-package org-journal
+    ;;   :after org
+    ;;   :config
+    ;;   (setq org-journal-dir "~/Org/journal/"
+    ;; 		org-journal-file-format "%Y-%m.org"
+    ;; 		org-journal-date-format "%Y-%m-%d"
+    ;; 		org-journal-file-type 'monthly
+    ;; 		org-journal-carryover-items ""))
+  #+end_src
+
+* Markdown
+
+  [[https://jblevins.org/projects/markdown-mode/][Markdown-mode]]
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package markdown-mode
+	  :custom
+	  (markdown-asymmetric-header t)		; Only place header markup at begging of line
+	  :hook
+	  (markdown-mode . visual-line-mode)	; Better handling of long line
+	  )
+  #+END_SRC
+
+* Handle whitespace
+
+  https://github.com/lewang/ws-butler
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package ws-butler
+	  :hook
+	  (text-mode . ws-butler-mode)
+	  (prog-mode . ws-butler-mode))
+  #+END_SRC
+
+* Spellchecking
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package flyspell
+	  ;; :hook
+	  ;; (text-mode . flyspell-mode)
+	  )
+
+	(use-package flyspell-correct
+	  :after flyspell
+	  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+
+	(use-package flyspell-correct-ivy
+	  :after flyspell-correct)
+  #+END_SRC
+
 * Completion using company-mode
 Configure in-buffer completion using [[https://company-mode.github.io/][company-mode]].
 
@@ -323,6 +302,15 @@ Configure in-buffer completion using [[https://company-mode.github.io/][company-
     :config
     (global-company-mode t))
 #+end_src
+
+* Magit
+
+  - [[https://magit.vc/][Magit]]
+  [[https://emacsair.me/2017/09/01/magit-walk-through/][- Magit walk through]]
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package magit)
+  #+END_SRC
 
 * Eglot
 Language server fedora packages:
@@ -352,3 +340,15 @@ The language server for Ansible is not packaged for Fedora. It can be installed 
     :hook
     (python-mode . eglot-ensure))
 #+end_src
+
+** YAML mode
+
+  #+BEGIN_SRC emacs-lisp
+	(use-package yaml-mode)
+  #+END_SRC
+
+** JSON mode
+
+#+BEGIN_SRC emacs-lisp
+  (use-package json-mode)
+#+END_SRC
