@@ -28,10 +28,11 @@
 
   #+BEGIN_SRC emacs-lisp
     (setq-default
-     inhibit-startup-screen t			; Disable startup screen
-     tab-width 4						; Smaller tabs
-     indent-tabs-mode nil				; Spaces instead of tabs
-     visible-bell t						; No beep
+     inhibit-startup-screen t ; Disable startup screen
+     tab-width 4			  ; Smaller tabs
+     indent-tabs-mode nil	  ; Spaces instead of tabs
+     visible-bell t			  ; No beep
+     cursor-type 'hbar        ; Change cursor to _
      )
 
     (global-auto-revert-mode t)			; Reload changed files
@@ -39,6 +40,7 @@
     (set-default-coding-systems 'utf-8)	; Default to UTF-8 encoding
     (tool-bar-mode -1)					; Disable the toolbar
     (scroll-bar-mode -1)                ; Disable vertical scroll bars
+    (menu-bar-mode -1)                  ; Disable menu bar
     (column-number-mode t)				; Display column number in modeline
     (global-hl-line-mode t)				; Always highlight current line
   #+END_SRC
