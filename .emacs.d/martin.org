@@ -7,6 +7,7 @@
 - [[#use-package][Use package]]
 - [[#treemacs][Treemacs]]
 - [[#ivy-mode][Ivy mode]]
+- [[#marginalia][Marginalia]]
 - [[#org-mode][Org Mode]]
   - [[#general-org-configuration][General Org configuration]]
   - [[#org-journal-mode][Org Journal mode]]
@@ -190,6 +191,17 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]. Bot
   ;;   (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
   ;;   )
 #+END_SRC
+
+* Marginalia
+Marginalia in the minibuffer.
+
+[[https://github.com/minad/marginalia][GitHub]]
+
+#+begin_src emacs-lisp
+  (use-package marginalia
+    :init
+    (marginalia-mode))
+#+end_src
 
 * Org Mode
 
