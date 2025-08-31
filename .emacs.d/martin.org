@@ -301,8 +301,12 @@ Configure in-buffer completion using [[https://company-mode.github.io/][company-
 
 #+begin_src emacs-lisp
   (use-package company
+    :custom
+    (global-company-mode t)
     :config
-    (global-company-mode t))
+    (setq-default company-idle-delay 0.1
+                  company-minimum-prefix-length 2)
+    )
 #+end_src
 
 * Magit
