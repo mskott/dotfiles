@@ -7,8 +7,9 @@
 - [[#use-package][Use package]]
 - [[#treemacs][Treemacs]]
 - [[#minibuffer-and-completion][Minibuffer and completion]]
-  -  [[#vertico---vertical-interactive-completion][Vertico - vertical interactive completion]]
+  - [[#vertico---vertical-interactive-completion][Vertico - vertical interactive completion]]
   - [[#marginalia-in-the-minibuffer][Marginalia in the minibuffer]]
+  - [[#orderless---improved-minibuffer-completions][Orderless - improved minibuffer completions]]
   - [[#consult---consulting-completing-read][Consult - consulting completing read]]
 - [[#org-mode][Org Mode]]
   - [[#general-org-configuration][General Org configuration]]
@@ -173,7 +174,7 @@ Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]. Bot
   #+end_src
 
 * Minibuffer and completion
-**  Vertico - vertical interactive completion
+** Vertico - vertical interactive completion
 [[https://github.com/minad/vertico][vertico.el]]
 
 #+begin_src emacs-lisp
@@ -196,6 +197,15 @@ Show helpful information about items in the minibuffer
   (use-package marginalia
     :init
     (marginalia-mode))
+#+end_src
+
+** Orderless - improved minibuffer completions
+[[https://github.com/oantolin/orderless][orderless]]
+
+#+begin_src emacs-lisp
+  (use-package orderless
+    :custom
+    (completion-styles '(orderless basic)))
 #+end_src
 
 ** Consult - consulting completing read
