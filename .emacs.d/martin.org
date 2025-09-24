@@ -4,6 +4,8 @@
 - [[#emacs][EMACS]]
 - [[#fonts][Fonts]]
 - [[#colour-theme][Colour theme]]
+  - [[#solarized][Solarized]]
+  - [[#modus-themes][Modus themes]]
 - [[#use-package][Use package]]
 - [[#treemacs][Treemacs]]
 - [[#minibuffer-and-completion][Minibuffer and completion]]
@@ -67,16 +69,27 @@
   #+END_SRC
 
 * Colour theme
-
+** Solarized
 Install the [[https://github.com/bbatsov/solarized-emacs][Solarized theme]]. Both ~solarized-dark~ and ~solarized-ligth~ are good.
 
 #+begin_src emacs-lisp
-  (use-package solarized-theme
-	:init
-	(setq solarized-scale-markdown-headlines t)
-	:config
-	(load-theme 'solarized-light t)
-	)
+  ;; (use-package solarized-theme
+  ;;   :init
+  ;;   (setq solarized-scale-markdown-headlines t)
+  ;;   :config
+  ;;   (load-theme 'solarized-light t)
+  ;;   )
+#+end_src
+
+** Modus themes
+The modus family of themes also look nice - and they are included with Emacs.
+
+Official manual: [[https://protesilaos.com/emacs/modus-themes]]
+
+#+begin_src emacs-lisp
+  (use-package modus-themes
+    :config
+    (load-theme 'modus-operandi-tinted :no-confirm))
 #+end_src
 
 * Use package
