@@ -19,7 +19,7 @@
 - [[#markdown][Markdown]]
 - [[#handle-whitespace][Handle whitespace]]
 - [[#spellchecking][Spellchecking]]
-- [[#completion-using-company-mode][Completion using company-mode]]
+- [[#in-buffer-completion][In-buffer completion]]
 - [[#magit][Magit]]
 - [[#eglot][Eglot]]
 - [[#progamming-languages][Progamming languages]]
@@ -340,17 +340,17 @@ Consult provides search and navigation commands based on the Emacs completion.
 	  :after flyspell-correct)
   #+END_SRC
 
-* Completion using company-mode
-Configure in-buffer completion using [[https://company-mode.github.io/][company-mode]].
+* In-buffer completion
+In-buffer completion using [[https://github.com/minad/corfu][Corfu]]. In the same family as many of the tools for [[*Minibuffer and completion][mini-buffer completion]].
 
 #+begin_src emacs-lisp
-  (use-package company
+  (use-package corfu
+    :init
+    (global-corfu-mode)
+    (corfu-popupinfo-mode)            ; Display documentation in popup
     :custom
-    (global-company-mode t)
-    :config
-    (setq-default company-idle-delay 0.1
-                  company-minimum-prefix-length 2)
-    )
+    (corfu-auto t)                    ; Enable auto completion
+    (corfu-quit-no-match 'separator)) ; Quit if no candidate found
 #+end_src
 
 * Magit
