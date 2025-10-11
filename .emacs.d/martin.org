@@ -343,6 +343,8 @@ Consult provides search and navigation commands based on the Emacs completion.
 * In-buffer completion
 In-buffer completion using [[https://github.com/minad/corfu][Corfu]]. In the same family as many of the tools for [[*Minibuffer and completion][mini-buffer completion]].
 
+[[https://kristofferbalintona.me/posts/202202270056/][Article with nice samples of configuration.]]
+
 #+begin_src emacs-lisp
   (use-package corfu
     :init
