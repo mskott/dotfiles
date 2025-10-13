@@ -27,6 +27,7 @@
   - [[#python][Python]]
   - [[#yaml-mode][YAML mode]]
   - [[#json-mode][JSON mode]]
+  - [[#ansible][Ansible]]
 - [[#custom-functions][Custom functions]]
   - [[#open-customer-notes][Open customer notes]]
 
@@ -367,16 +368,20 @@ In-buffer completion using [[https://github.com/minad/corfu][Corfu]]. In the sam
   #+END_SRC
 
 * Eglot
-Language server fedora packages:
+Language server Fedora packages:
 - Go :: gopls
 - Python :: python3-lsp-server
 
 The language server for Ansible is not packaged for Fedora. It can be installed using ~npm i @ansible/ansible-language-server~ and adding its bin/ to the PATH.
+
+The language server for YAML also isn't packaged. Can be installed using ~npm install yaml-language-server~ and also adding it to the PATH.
+
 #+begin_src emacs-lisp
   (use-package eglot
     :config
     (add-to-list 'eglot-server-programs
-                 '(yaml-mode . ("ansible-language-server" "--stdio"))))
+                 '(ansible-mode . ("ansible-language-server" "--stdio"))
+                 '(yaml-mode . ("yaml-language-server"))))
 #+end_src
 
 * Progamming languages
@@ -396,16 +401,23 @@ The language server for Ansible is not packaged for Fedora. It can be installed 
 #+end_src
 
 ** YAML mode
-
   #+BEGIN_SRC emacs-lisp
-	(use-package yaml-mode)
+    (use-package yaml-mode
+      :hook
+      (yaml-mode . eglot-ensure))
   #+END_SRC
 
 ** JSON mode
-
 #+BEGIN_SRC emacs-lisp
   (use-package json-mode)
 #+END_SRC
+
+** Ansible
+#+begin_src emacs-lisp
+  (use-package ansible
+    :hook
+    (ansible-mode . eglot-ensure))
+#+end_src
 
 * Custom functions
 ** Open customer notes
