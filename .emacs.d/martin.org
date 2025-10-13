@@ -27,6 +27,8 @@
   - [[#python][Python]]
   - [[#yaml-mode][YAML mode]]
   - [[#json-mode][JSON mode]]
+- [[#custom-functions][Custom functions]]
+  - [[#open-customer-notes][Open customer notes]]
 
 * EMACS
 
@@ -404,3 +406,17 @@ The language server for Ansible is not packaged for Fedora. It can be installed 
 #+BEGIN_SRC emacs-lisp
   (use-package json-mode)
 #+END_SRC
+
+* Custom functions
+** Open customer notes
+Open notes about specific customer with completion using ~C-c f~
+#+begin_src emacs-lisp
+  (defvar my-customer-notes-path "~/Org/Customers")
+  (defun my-find-customer-notes ()
+    "Open notes about a customer"
+    (interactive)
+      (find-file (expand-file-name
+                  (completing-read "Customer: " (directory-files my-customer-notes-path nil "\\.org$"))
+                  my-customer-notes-path)))
+  (global-set-key (kbd "C-c f") 'my-find-customer-notes)
+#+end_src
