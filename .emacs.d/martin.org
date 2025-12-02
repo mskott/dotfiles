@@ -1,12 +1,12 @@
 #+TITLE: Martins EMACS configuration
 
 * Table of contents                                            :TOC:noexport:
+- [[#use-package][use-package]]
 - [[#emacs][EMACS]]
 - [[#fonts][Fonts]]
 - [[#colour-theme][Colour theme]]
   - [[#solarized][Solarized]]
   - [[#modus-themes][Modus themes]]
-- [[#use-package][Use package]]
 - [[#treemacs][Treemacs]]
 - [[#minibuffer-and-completion][Minibuffer and completion]]
   - [[#vertico---vertical-interactive-completion][Vertico - vertical interactive completion]]
@@ -30,6 +30,11 @@
   - [[#ansible][Ansible]]
 - [[#custom-functions][Custom functions]]
   - [[#open-customer-notes][Open customer notes]]
+
+* use-package
+~use-package~ is configured in [[file:init.el][init.el]]. Here is [[https://ianyepan.github.io/posts/setting-up-use-package/][a simple tutorial]] and [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][some hints]] about configuring packages in an optimised way.
+
+[[info:use-package#Top][The manual]] is shipped with Emacs.
 
 * EMACS
 
@@ -94,9 +99,6 @@ Official manual: [[https://protesilaos.com/emacs/modus-themes]]
     :config
     (load-theme 'modus-operandi-tinted :no-confirm))
 #+end_src
-
-* Use package
-[[https://github.com/jwiegley/use-package][Use package]] is configured in [[file:init.el][init.el]]. Here is [[https://ianyepan.github.io/posts/setting-up-use-package/][a simple tutorial]].
 
 * Treemacs
   https://github.com/Alexander-Miller/treemacs
