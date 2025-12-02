@@ -257,7 +257,7 @@ Consult provides search and navigation commands based on the Emacs completion.
       (org-mode . visual-line-mode)	; Better handling of long line
       :config
       (setq org-default-notes-file "~/Org/inbox.org"
-            org-agenda-files (list "~/Org" "~/Org/journal" "~/Org/Customers" "~/Org/Products")
+            org-agenda-files (list "~/Org" "~/Org/Customers" "~/Org/Products")
             org-refile-targets '((org-agenda-files . (:maxlevel . 2)))
             org-special-ctrl-a/e t ; Change C-a/C-e behaviour on headlines
             ))
