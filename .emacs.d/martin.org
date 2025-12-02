@@ -200,13 +200,11 @@ Heavily inspired by Prot's setup described on [[https://protesilaos.com/codelog/
 
 #+begin_src emacs-lisp
   (use-package vertico
-    :init
-    (vertico-mode))
+    :hook after-init)
 
   ;; Persist history over emacs restarts. Vertico sorts by history position
   (use-package savehist
-    :init
-    (savehist-mode))
+    :hook after-init)
 #+end_src
 
 ** Marginalia in the minibuffer
@@ -216,8 +214,7 @@ Show helpful information about items in the minibuffer
 
 #+begin_src emacs-lisp
   (use-package marginalia
-    :init
-    (marginalia-mode))
+    :hook after-init)
 #+end_src
 
 ** Orderless - improved minibuffer completions
