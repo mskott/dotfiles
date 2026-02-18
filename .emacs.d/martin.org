@@ -28,6 +28,7 @@
   - [[#yaml-mode][YAML mode]]
   - [[#json-mode][JSON mode]]
   - [[#ansible][Ansible]]
+  - [[#justfiles][Justfiles]]
 - [[#custom-functions][Custom functions]]
   - [[#open-customer-notes][Open customer notes]]
 
@@ -416,6 +417,11 @@ The language server for YAML also isn't packaged. Can be installed using ~npm in
   (use-package ansible
     :hook
     (ansible-mode . eglot-ensure))
+#+end_src
+
+** Justfiles
+#+begin_src emacs-lisp
+  (use-package just-mode)
 #+end_src
 
 * Custom functions
