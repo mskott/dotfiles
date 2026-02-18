@@ -13,10 +13,12 @@
       become: true
       ansible.builtin.package:
         name:
-          - emacs
           - bat
           - btop
+          - emacs
+          - fzf
           - google-roboto-mono-fonts
+          - just
           - starship
         state: present
       tags: always
