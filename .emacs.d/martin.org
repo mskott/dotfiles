@@ -50,14 +50,15 @@
      cursor-type 'hbar        ; Change cursor to _
      )
 
-    (global-auto-revert-mode t)			; Reload changed files
-    (electric-pair-mode)				; Smart handling of parens
-    (set-default-coding-systems 'utf-8)	; Default to UTF-8 encoding
-    (tool-bar-mode -1)					; Disable the toolbar
-    (scroll-bar-mode -1)                ; Disable vertical scroll bars
-    (menu-bar-mode -1)                  ; Disable menu bar
-    (column-number-mode t)				; Display column number in modeline
-    (global-hl-line-mode t)				; Always highlight current line
+    (global-auto-revert-mode t)          ; Reload changed files
+    (electric-pair-mode)                 ; Smart handling of parens
+    (set-default-coding-systems 'utf-8)  ; Default to UTF-8 encoding
+    (tool-bar-mode -1)                   ; Disable the toolbar
+    (scroll-bar-mode -1)                 ; Disable vertical scroll bars
+    (menu-bar-mode -1)                   ; Disable menu bar
+    (column-number-mode t)               ; Display column number in modeline
+    (global-hl-line-mode t)              ; Always highlight current line
+    (windmove-default-keybindings 'meta) ; Enable windmove with meta as modifier
   #+END_SRC
 
 * Fonts
