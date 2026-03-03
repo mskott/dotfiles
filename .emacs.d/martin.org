@@ -3,6 +3,7 @@
 * Table of contents                                            :TOC:noexport:
 - [[#use-package][use-package]]
 - [[#emacs][EMACS]]
+- [[#emacs-server][Emacs server]]
 - [[#fonts][Fonts]]
 - [[#colour-theme][Colour theme]]
   - [[#solarized][Solarized]]
@@ -60,10 +61,15 @@
     (global-hl-line-mode t)              ; Always highlight current line
     (windmove-default-keybindings 'meta) ; Enable windmove with meta as modifier
   #+END_SRC
+* Emacs server
+Start the Emacs server when Emacs starts.
 
+#+begin_src emacs-lisp
+  (server-start)
+#+end_src
 * Fonts
 
-  Fonts are strange - be carefull when setting hight, 20 is way too small.
+  Fonts are strange - be carefull when setting height, 20 is way too small.
   _Roboto Mono_ is available in Fedora in the package ~google-roboto-mono-fonts~. Another option is _Source Code Pro_ which also looks good.
 
   #+BEGIN_SRC emacs-lisp
