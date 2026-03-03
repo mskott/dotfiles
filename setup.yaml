@@ -59,11 +59,13 @@
         state: directory
       tags: always
 
-    - name: Symlink open-with-emacs.sh
+    - name: Symlink ~/bin files
       ansible.builtin.file:
-        src: '{{ playbook_dir }}/bin/open-with-emacs.sh'
-        dest: '{{ ansible_env.HOME }}/bin/e'
+        src: '{{ playbook_dir }}/bin/{{ item.src }}'
+        dest: '{{ ansible_env.HOME }}/bin/{{ item.dest }}'
         state: link
+      loop:
+        - { src: 'open-with-emacs.sh', dest: 'e' }
       tags: always
 
 
