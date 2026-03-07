@@ -97,15 +97,15 @@
 
     - name: Create Alacritty theme dir
       ansible.builtin.file:
-        path: '{{ ansible_env.HOME }}/.config/alacritty/themes'
+        path: '{{ ansible_env.HOME }}/.config/alacritty/alacritty-themes'
         state: directory
-      tags: alacritty
+      tags: niri
 
     - name: Clone Alacritty themes repo
       ansible.builtin.git:
         repo: 'https://github.com/alacritty/alacritty-theme'
         dest: '{{ ansible_env.HOME }}/.config/alacritty/alacritty-themes'
-      tags: alacritty
+      tags: niri
 
     - name: Symlink Niri configuration
       ansible.builtin.file:
