@@ -1,0 +1,10 @@
+[general]
+import = [
+    "~/.config/alacritty/alacritty-themes/themes/solarized_dark.toml"
+]
+
+[window]
+decorations = "None"
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular"}
