@@ -117,6 +117,7 @@
         - niri
         - waybar
         - systemd/user/swaybg.service
+        - systemd/user/swayidle.service
         - alacritty/alacritty.toml
       tags: niri
 
@@ -129,6 +130,7 @@
         - /usr/lib/systemd/user/kanshi.service
         - /usr/lib/systemd/user/mako.service
         - '{{ playbook_dir }}/.config/systemd/user/swaybg.service'
+        - '{{ playbook_dir }}/.config/systemd/user/swayidle.service'
         - /usr/lib/systemd/user/waybar.service
       tags: niri
 
