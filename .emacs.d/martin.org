@@ -49,6 +49,7 @@
      indent-tabs-mode nil	  ; Spaces instead of tabs
      visible-bell t			  ; No beep
      cursor-type 'hbar        ; Change cursor to _
+     frame-title-format "%b"  ; Set window title to buffer name
      )
 
     (global-auto-revert-mode t)          ; Reload changed files
