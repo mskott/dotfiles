@@ -198,10 +198,5 @@
 			"hibernate": "systemctl hibernate",
             "soft-reboot": "systemctl soft-reboot"
 		}
-    },
-    "niri/window": {
-        "rewrite": {
-            "(.*) - GNU Emacs at .*": "Emacs: $1"
-        }
     }
 }
