@@ -44,12 +44,13 @@
 
   #+BEGIN_SRC emacs-lisp
     (setq-default
-     inhibit-startup-screen t ; Disable startup screen
-     tab-width 4			  ; Smaller tabs
-     indent-tabs-mode nil	  ; Spaces instead of tabs
-     visible-bell t			  ; No beep
-     cursor-type 'hbar        ; Change cursor to _
-     frame-title-format "%b"  ; Set window title to buffer name
+     inhibit-startup-screen t            ; Disable startup screen
+     tab-width 4                         ; Smaller tabs
+     indent-tabs-mode nil                ; Spaces instead of tabs
+     visible-bell t                      ; No beep
+     cursor-type 'hbar                   ; Change cursor to _
+     frame-title-format "%b"             ; Set window title to buffer name
+     use-short-answers t                 ; Shorten yes/no to y/n
      )
 
     (global-auto-revert-mode t)          ; Reload changed files
