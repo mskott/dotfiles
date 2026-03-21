@@ -113,12 +113,13 @@
         dest: '{{ ansible_env.HOME }}/.config/{{ item }}'
         state: link
       loop:
+        - alacritty/alacritty.toml
+        - fuzzel
         - kanshi
         - niri
-        - waybar
         - systemd/user/swaybg.service
         - systemd/user/swayidle.service
-        - alacritty/alacritty.toml
+        - waybar
       tags: niri
 
     - name: Setup Niri wants
