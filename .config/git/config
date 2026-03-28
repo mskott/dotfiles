@@ -10,3 +10,7 @@
 
 [core]
 	excludesfile = ~/.gitexcludes
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
