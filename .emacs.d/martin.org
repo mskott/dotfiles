@@ -51,6 +51,7 @@
      cursor-type 'hbar                   ; Change cursor to _
      frame-title-format "%b"             ; Set window title to buffer name
      use-short-answers t                 ; Shorten yes/no to y/n
+     help-window-select t                ; Select help window to easily close with q
      )
 
     (global-auto-revert-mode t)          ; Reload changed files
