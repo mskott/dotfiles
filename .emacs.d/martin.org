@@ -71,21 +71,20 @@ Start the Emacs server when Emacs starts.
   (server-start)
 #+end_src
 * Fonts
+Choose a pretty font depending on what is available.
 
-  Fonts are strange - be carefull when setting height, 20 is way too small.
-  _Roboto Mono_ is available in Fedora in the package ~google-roboto-mono-fonts~. Another option is _Source Code Pro_ which also looks good.
+_Roboto Mono_ is available in Fedora in the package ~google-roboto-mono-fonts~.
 
-  #+BEGIN_SRC emacs-lisp
-    ;; Default face
-    (set-face-attribute 'default nil
-                        :font "Roboto Mono"
-                        :height 120)
-
-    ;; Fixed pitch face (aka. monospace text)
-    (set-face-attribute 'fixed-pitch nil
-                        :font "Roboto Mono"
-                        :height 120)
-  #+END_SRC
+  #+begin_src emacs-lisp
+    (cond
+     ((find-font (font-spec :name "Roboto Mono"))
+      (set-frame-font "Roboto Mono-14"))
+      ((find-font (font-spec :name "Source Code Pro"))
+       (set-frame-font "Source Code Pro-14"))
+      ((find-font (font-spec :name "Adwaita Mono"))
+      (set-frame-font "Adwaita Mono-14"))
+    )
+  #+end_src
 
 * Colour theme
 ** Solarized
