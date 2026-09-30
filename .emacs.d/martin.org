@@ -30,8 +30,11 @@
   - [[#json-mode][JSON mode]]
   - [[#ansible][Ansible]]
   - [[#justfiles][Justfiles]]
+  - [[#asciidoc][Asciidoc]]
 - [[#custom-functions][Custom functions]]
   - [[#open-customer-notes][Open customer notes]]
+- [[#ai][AI]]
+  - [[#agent-shell][agent-shell]]
 
 * use-package
 ~use-package~ is configured in [[file:init.el][init.el]]. Here is [[https://ianyepan.github.io/posts/setting-up-use-package/][a simple tutorial]] and [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][some hints]] about configuring packages in an optimised way.
@@ -433,7 +436,10 @@ The language server for YAML also isn't packaged. Can be installed using ~npm in
 #+begin_src emacs-lisp
   (use-package just-mode)
 #+end_src
-
+** Asciidoc
+#+begin_src emacs-lisp
+  (use-package asciidoc-mode)
+#+end_src
 * Custom functions
 ** Open customer notes
 Open notes about specific customer with completion using ~C-c f~
