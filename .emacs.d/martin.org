@@ -23,6 +23,7 @@
 - [[#in-buffer-completion][In-buffer completion]]
 - [[#magit][Magit]]
 - [[#eglot][Eglot]]
+- [[#indent-bars][Indent bars]]
 - [[#progamming-languages][Progamming languages]]
   - [[#golang][Golang]]
   - [[#python][Python]]
@@ -397,6 +398,15 @@ The language server for YAML also isn't packaged. Can be installed using ~npm in
                  '(yaml-mode . ("yaml-language-server"))))
 #+end_src
 
+* Indent bars
+Make indentation visible using vertical bars.
+
+https://github.com/jdtsmith/indent-bars
+
+#+begin_src emacs-lisp
+  (use-package indent-bars
+    :hook ((python-base-mode yaml-mode) . indent-bars-mode))
+#+end_src
 * Progamming languages
 ** Golang
 #+begin_src emacs-lisp
